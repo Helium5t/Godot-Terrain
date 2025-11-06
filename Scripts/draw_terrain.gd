@@ -361,7 +361,10 @@ func _render_callback(_effect_callback_type : int, render_data : RenderData):
 	rd.draw_command_begin_label("Terrain Mesh", Color(1.0, 1.0, 1.0, 1.0))
 
 	# The rest of this code is the creation of the draw call command list whether we are doing wireframe mode or not
-	var draw_list = rd.draw_list_begin(p_framebuffer, rd.DRAW_IGNORE_ALL, clear_colors, 1.0,  0,  Rect2(), 0)
+	var draw_flags = rd.DRAW_IGNORE_ALL
+	if OS.get_name() == "macOS":
+		draw_flags = rd.DRAW_IGNORE_ALL
+	var draw_list = rd.draw_list_begin(p_framebuffer,draw_flags, clear_colors, 1.0,  0,  Rect2(), 0)
 
 	if wireframe:
 		rd.draw_list_bind_render_pipeline(draw_list, p_wire_render_pipeline)
