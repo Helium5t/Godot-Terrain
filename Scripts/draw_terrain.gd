@@ -363,7 +363,7 @@ func _render_callback(_effect_callback_type : int, render_data : RenderData):
 	# The rest of this code is the creation of the draw call command list whether we are doing wireframe mode or not
 	var draw_flags = rd.DRAW_IGNORE_ALL
 	if OS.get_name() == "macOS":
-		draw_flags = rd.DRAW_IGNORE_ALL
+		draw_flags = rd.DRAW_DEFAULT_ALL
 	var draw_list = rd.draw_list_begin(p_framebuffer,draw_flags, clear_colors, 1.0,  0,  Rect2(), 0)
 
 	if wireframe:
